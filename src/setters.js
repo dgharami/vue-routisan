@@ -21,6 +21,9 @@ export default {
 
         shared.childStack.pop();
     },
+    meta ($this, meta) {
+        $this.config.meta = Object.assign($this.config.meta, meta);
+    },
     prefix ($this, prefix) {
         $this.config.path = fixSlashes([prefix, $this.config.path]);
     }

@@ -36,6 +36,11 @@ export default class Route {
         return this;
     }
 
+    meta (meta) {
+        this._set('meta', meta);
+        return this;
+    }
+
     _set (key, value) {
         const paths = ['redirect', 'alias', 'prefix'];
 
