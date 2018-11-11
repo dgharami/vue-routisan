@@ -10,9 +10,9 @@ export default class Route {
 
     options (options) {
         options = filterOptions(options, [
-            'name', 'components', 'redirect', 'props',
-            'alias', 'children', 'beforeEnter', 'meta',
-            'caseSensitive', 'pathToRegexpOptions', 'prefix'
+            'name', 'props', 'alias', 'children',
+            'beforeEnter', 'meta', 'caseSensitive',
+            'pathToRegexpOptions', 'prefix'
         ]);
 
         Object.keys(options)

@@ -25,7 +25,9 @@ export default class Routisan {
     }
 
     view (path, component) {
-        return this._addRoute(path, 'component', component);
+        const key = (typeof component === 'object' && !component.__file ? 'components' : 'component');
+
+        return this._addRoute(path, key, component);
     }
 
     redirect (path, redirect) {

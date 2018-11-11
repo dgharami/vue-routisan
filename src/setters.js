@@ -5,6 +5,13 @@ export default {
     component ($this, component) {
         $this.config.component = shared.resolver(component);
     },
+    components ($this, components) {
+        $this.config.components = {};
+
+        for (let name in components) {
+            $this.config.components[name] = shared.resolver(components[name]);
+        }
+    },
     beforeEnter ($this, guard) {
         guard = arrayWrap(guard);
 
