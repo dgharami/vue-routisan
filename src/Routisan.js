@@ -15,11 +15,15 @@ export default class Routisan {
     _addRoute (path, key, value) {
         const route = new Route(path, key, value);
 
-        if (this._groupStack.length) {
-            route.options(arrayLast(this._groupStack));
-        }
+        if (shared.isRoot()) {
+            if (this._groupStack.length) {
+                route.options(arrayLast(this._groupStack));
+            }
 
-        (shared.isRoot() ? this._routes : arrayLast(shared.childStack)).push(route);
+            this._routes.push(route);
+        } else {
+            arrayLast(shared.childStack).push(route);
+        }
 
         return route;
     }
