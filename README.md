@@ -163,6 +163,7 @@ Allows you to apply route options to multiple routes.
 
 - Navigation guards defined for the group will take priority over guards defined on the individual routes in the callback.
 - Route groups can be nested.
+- Route group options are not applied to nested routes (routes created in the `children` key/method).
 
 ```js
 Route.group({ beforeEnter: guest }, () => {
