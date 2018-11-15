@@ -70,6 +70,17 @@ The `name()` method sets the `name` option on the *route instance*.
 Route.view('/user/profile', 'Profile').name('profile');
 ```
 
+### Named views
+
+XXX.
+
+```js
+Route.view('x', {
+    default: 'x',
+    x: 'x'
+});
+```
+
 ### Navigation guards
 
 The `guard()` method sets the `beforeEnter` option on the *route instance*.
@@ -89,7 +100,25 @@ This applies not only to the `guard()` method, you can do this with any of the m
 Route.view('/admin/dashboard', 'Dashboard').guard([auth, admin]);
 ```
 
-### Nested Routes
+### Meta fields
+
+The `meta()` method sets the `meta` option on the *route instance*.
+
+```js
+Route.view('x', 'x').meta({ x: 'x' });
+```
+
+EXPLAIN META FIELDS MERGING BEHAVIOR
+
+```js
+Route.group({ meta: { x: 'x' } }, () => {
+    Route.view('x', 'x')
+        .options({ meta: { x: 'x' } })
+        .meta({ x: 'x' });
+});
+```
+
+### Nested routes
 
 The `children()` method sets the `children` option on the *route instance*.
 
@@ -105,7 +134,7 @@ Route.view('/user', 'User').children(() => {
 
 Use the `options()` method to set all other options on the *route instance*.
 
-This method will not override the `path` and `component` options. They will be ignored if you specify them.
+This method will not override `path`, `component`, `components`, and `redirect`. They will be ignored if you specify them.
 
 The `children` option expects a callback function instead of an array (See Nested Routes).
 
@@ -179,7 +208,7 @@ Slashes will not be prepended to the paths of nested routes.
 ```js
 import Route from 'vue-routisan';
 
-// define view resolver
+// define view resolver (optional)
 
 // define routes
 
